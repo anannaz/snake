@@ -10,21 +10,21 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 3, '*'); //класс Point создает точки и выводит на экран
-            p1.Draw();
+            Console.SetBufferSize(80, 25);
 
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw(); //p1 p2 объекты класса Point
+            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+'); // создаю линию, задать положение точки
+            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
+            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
+            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');//создаем рамочку
+            upLine.Drow(); //вывести линию на экран
+            downLine.Drow();
+            leftLine.Drow();
+            rightLine.Drow();
 
-            HorizontalLine line = new HorizontalLine(6, 10, 8, '+'); // создаю линию, задать положение точки
-            line.Drow(); //вывести линию на экран
-            VerticalLine l = new VerticalLine(1, 8, 6, '&');
-            l.Drow();
+            Point p = new Point(4, 5, '*'); //класс Point создает точки и выводит на экран
+            Snake snake = new Snake(p, 4, Direction.RIGHT); //точка задает хвост, длину, 
+            snake.Drow();
 
-                
-
-
-            Console.ReadLine();
         }
         
     }
