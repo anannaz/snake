@@ -16,8 +16,12 @@ namespace Snake
             Point p2 = new Point(4, 5, '#');
             p2.Draw(); //p1 p2 объекты класса Point
 
-            HorizontalLine line = new HorizontalLine(5, 10, 8, '+'); // создаю линию, задать положение точки
+            HorizontalLine line = new HorizontalLine(6, 10, 8, '+'); // создаю линию, задать положение точки
             line.Drow(); //вывести линию на экран
+            VerticalLine l = new VerticalLine(1, 8, 6, '&');
+            l.Drow();
+
+                
 
 
             Console.ReadLine();

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class HorizontalLine //список точек
+    class HorizontalLine : Figure //список точек, гориз линия частный случай фигуры, наследуется от фигуры
+        //гор линия является представителем Фигуры
     {
-        List<Point> pList;   //список точек выстраиваются в одну линию
+        
         public HorizontalLine(int xLeft, int xRight,int y, char sym) //конструктор, метод вызывается при создании линии
         {//при создании гориз линии передаем параметры (длина и положение линии)
             pList = new List<Point>(); //создаем пустой список
@@ -19,14 +20,6 @@ namespace Snake
             }
            
         }
-        public void Drow()// метод отвечает за вывод на экран
-        {
-            foreach(Point p in pList) //цикл все точки из списка
-            {
-                p.Draw(); //вывод их на экран
 
-            }
-
-        } 
     }
 }
