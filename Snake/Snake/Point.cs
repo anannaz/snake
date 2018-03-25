@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Point
+    class Point //класс, описывает как выглядит точка,  состоит из
     {
-        public int x;
+        public int x; //данные, координаты по оси х у и символ
         public int y;
         public char sym;
 
-        public Point()
+        public Point() //начало конструктора
         {            
         }
 
@@ -20,10 +20,10 @@ namespace Snake
         {
             x = _x;
             y = _y;
-            sym = _sym;
+            sym = _sym; //конец конструктора
         }
 
-        public void Draw()
+        public void Draw() //методы
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
