@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Program
+    class Program //класс собирает 
     {
         static void Main(string[] args)
         {
@@ -24,6 +25,22 @@ namespace Snake
             Point p = new Point(4, 5, '*'); //класс Point создает точки и выводит на экран
             Snake snake = new Snake(p, 4, Direction.RIGHT); //точка задает хвост, длину, 
             snake.Drow();
+            snake.Move();
+            Thread.Sleep(300);//задержка на 300 милисекунд
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
 
         }
         

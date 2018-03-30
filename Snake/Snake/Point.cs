@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Point //класс, описывает как выглядит точка,  состоит из
+    class Point //класс, описывает как выглядит точка,  оперирует тремя переменными, состоит из
     {
         public int x; //данные, координаты по оси х у и символ
         public int y;
@@ -52,10 +52,15 @@ namespace Snake
             }
 
         }
-        public void Draw() //методы
+        public void Draw() //методы оперируют переменными принадлежащими данному классу
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
+        }
+        public void Clear()//метод который затрет точку
+        {
+            sym = ' ';
+            Draw();//отрисовать точку с новым значением
         }
 
         public override string ToString() //метод
