@@ -55,6 +55,19 @@ namespace Snake
             else if (key == ConsoleKey.UpArrow)
                 direction = Direction.UP;
         }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint(); //переиспользование функции в какой точке змейка оказывается в след момент, след положение головы змейки
+            if (head.IsHit(food)) //если точка головы там где еда, то акт питания
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+                return false;
+        }
         
     }
 }

@@ -26,18 +26,32 @@ namespace Snake
             Snake snake = new Snake(p, 4, Direction.RIGHT); //точка задает хвост, длину 4, направление движения вправо
             snake.Drow();
 
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$'); //класс ответственный за генерацию точек-еды, габариты экрана и символ еды
+            Point food = foodCreator.CreateFood(); //метод создает точку в произвольном месте
+            food.Draw(); //вывести эту точку на экран
+
             while (true) //обработка нажатия клавиш, бесконечный цикл, код внутри скобочек выполняется вечно
             {
-                if(Console.KeyAvailable) //проверка была ли нажата какая-либо клавиша
+                if (snake.Eat(food)) //метод возвращает или правду или ложь, будет змейка кушать или нет
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move(); //двигаю змейку
+                }
+                Thread.Sleep(100); //задержка на 100 милисекунд
+
+
+                if (Console.KeyAvailable) //проверка была ли нажата какая-либо клавиша
                 {
                     ConsoleKeyInfo key = Console.ReadKey();//получаю значение клавиши и делаю проверку чему она равна
                     snake.HandleKey(key.Key); //вызов метода из класса Змейка для обработки нажатия
                 }
-                Thread.Sleep(100); //задержка на 100 милисекунд
-                snake.Move(); //двигаю змейку
-            }           
-            
 
+            }          
+            
         }
         
     }

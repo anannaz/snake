@@ -52,6 +52,12 @@ namespace Snake
             }
 
         }
+
+        public bool IsHit(Point p) // метод проверяет на равенство координат текущей точки и точки переданной в качестве аргмента
+        {
+            return p.x == this.x && p.y == this.y;
+        }
+
         public void Draw() //методы оперируют переменными принадлежащими данному классу
         {
             Console.SetCursorPosition(x, y);
