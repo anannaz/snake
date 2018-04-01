@@ -25,7 +25,7 @@ namespace Snake
             //реализовать конструктор который правильным образом заполнит список точек из которых состоит змейка
         }
 
-        internal void Move()
+        public void Move()
         {
             Point tail = pList.First();//вызываем у змейки метод ферст, возвращает первый элемент списка
             pList.Remove(tail); //удаляем хвост, минус одна точка
@@ -43,7 +43,7 @@ namespace Snake
             return nextPoint;//получили новую точку положения головы
         }   
 
-        internal bool IsHitTail() //метод
+        public bool IsHitTail() //метод
         {
             var head = pList.Last(); //получаем координаты головной точки
             for(int i=0; i<pList.Count-2; i++) //есть ли совпадение между координатами головы и оставшегося хвоста
@@ -66,7 +66,7 @@ namespace Snake
                 direction = Direction.UP;
         }
 
-        internal bool Eat(Point food)
+        public bool Eat(Point food)
         {
             Point head = GetNextPoint(); //переиспользование функции в какой точке змейка оказывается в след момент, след положение головы змейки
             if (head.IsHit(food)) //если точка головы там где еда, то акт питания

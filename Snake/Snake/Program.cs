@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Snake //Kartavec (c)
+namespace Snake //Евгений Kartavec (c)
 {
     class Program //класс собирает 
     {
@@ -15,12 +15,12 @@ namespace Snake //Kartavec (c)
             Walls walls = new Walls(80, 25);
             walls.Draw();
 
-            Point p = new Point(4, 5, '*'); //класс Point создает точки и выводит на экран
+            Point p = new Point(4, 5, '*'); //класс Point создает точки и выводит на экран, обьект класса точка
             Snake snake = new Snake(p, 4, Direction.RIGHT); //точка задает хвост, длину 4, направление движения вправо
             snake.Draw();
 
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
-            Point food = foodCreator.CreateFood();
+            Point food = foodCreator.CreateFood(); //обьект класса точка
             food.Draw();
 
             while (true) //обработка нажатия клавиш, бесконечный цикл, код внутри скобочек выполняется вечно

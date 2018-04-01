@@ -8,9 +8,9 @@ namespace Snake
 {
     class FoodCreator
     {
-        int mapWidth; //переменные хранит обьект класса, являются полями класса, две переменных одноименных, значение по умолчанию 0
-        int mapHeight;
-        char sym;
+        private int mapWidth; //переменные хранит обьект класса, являются полями класса, две переменных одноименных, значение по умолчанию 0
+        private int mapHeight;
+        private char sym;
 
         Random random = new Random();
 
