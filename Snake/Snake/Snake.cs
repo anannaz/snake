@@ -10,12 +10,11 @@ namespace Snake
         //Абстрагирование - выделить набор значимых характеристик объекта исключая незначимые
         //Класс содержит один конструктор 
     {
-        public Direction direction; //класс хранит данные в каком направлении двигается змейка
+        Direction direction; //класс хранит данные в каком направлении двигается змейка
 
         public Snake(Point tail, int length, Direction _direction) //создаем конструктор, который принимает параметры(координаты хвоста, ее длину и направление)
         {
             direction = _direction; //заполняется направление в конструкторе
-
             pList = new List<Point>(); //создаем список
             for (int i = 0; i < length; i++) //в цикле несколько раз создаем точки, точные копии хвостовой точки
             {
@@ -43,6 +42,17 @@ namespace Snake
             nextPoint.Move(1, direction);//сдвинем точку по направлению дирекшн
             return nextPoint;//получили новую точку положения головы
         }   
+
+        internal bool IsHitTail() //метод
+        {
+            var head = pList.Last(); //получаем координаты головной точки
+            for(int i=0; i<pList.Count-2; i++) //есть ли совпадение между координатами головы и оставшегося хвоста
+            {
+                if (head.IsHit(pList[i])) //есть ли пересечение координат
+                    return true;
+            }
+            return false;
+        }
         
         public void HandleKey(ConsoleKey key) //сам класс змейка отвечает за реакцию на клавиши
         {

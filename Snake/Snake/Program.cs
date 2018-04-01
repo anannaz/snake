@@ -5,33 +5,31 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Snake
+namespace Snake //Kartavec (c)
 {
     class Program //класс собирает 
     {
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);
-
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+'); // создаю линию, задать положение точки
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
-            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');//создаем рамочку
-            upLine.Drow(); //вывести линию на экран, нарисовали рамочку
-            downLine.Drow();
-            leftLine.Drow();
-            rightLine.Drow();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             Point p = new Point(4, 5, '*'); //класс Point создает точки и выводит на экран
             Snake snake = new Snake(p, 4, Direction.RIGHT); //точка задает хвост, длину 4, направление движения вправо
-            snake.Drow();
+            snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(80, 25, '$'); //класс ответственный за генерацию точек-еды, габариты экрана и символ еды
-            Point food = foodCreator.CreateFood(); //метод создает точку в произвольном месте
-            food.Draw(); //вывести эту точку на экран
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
 
             while (true) //обработка нажатия клавиш, бесконечный цикл, код внутри скобочек выполняется вечно
             {
+                if(walls.IsHit(snake) || snake.IsHitTail()) //проверка столкнулась ли Змейка со стеной ИЛИ с хвостом
+                {
+                    break; //выйти из цикла
+                }
+
                 if (snake.Eat(food)) //метод возвращает или правду или ложь, будет змейка кушать или нет
                 {
                     food = foodCreator.CreateFood();
@@ -41,18 +39,14 @@ namespace Snake
                 {
                     snake.Move(); //двигаю змейку
                 }
-                Thread.Sleep(100); //задержка на 100 милисекунд
-
-
-                if (Console.KeyAvailable) //проверка была ли нажата какая-либо клавиша
+                Thread.Sleep(100); //задержка на 100 милисекунд  
+                if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();//получаю значение клавиши и делаю проверку чему она равна
-                    snake.HandleKey(key.Key); //вызов метода из класса Змейка для обработки нажатия
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key );
                 }
-
-            }          
-            
+            }
         }
-        
     }
 }
+

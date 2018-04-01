@@ -12,7 +12,7 @@ namespace Snake
     {//гориз и вертик линии это фигуры состоящие из точек
         protected List<Point> pList;   //список точек выстраиваются в одну линию, модификатор доступа, чтобы переменная pList была видна у наследников
 
-        public void Drow()// метод отвечает за вывод на экран
+        public void Draw()// метод отвечает за вывод на экран
         {
             foreach (Point p in pList) //цикл все точки из списка
             {
@@ -21,6 +21,27 @@ namespace Snake
             }
 
         }
+        internal bool IsHit(Figure figure) //реализация метода внутри Фигуры
+        {
+            foreach (var p in pList) //проверка всех точек в Фигуре
+            {
+                if (figure.IsHit(p))                     //в качестве аргумента точка, берется нижний метод IsHit(Point point)                
+                    return true;
 
+                }
+                return false;
+            }
+
+
+        private bool IsHit(Point point) //другая одноименная функция реализации точки
+        {
+            foreach (var p in pList)
+            {
+                if (p.IsHit(point))
+                    return true;
+            }
+            return false;
+        }
     }
 }
+
